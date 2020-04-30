@@ -1,4 +1,4 @@
 # Python 
 
-A custom python docker image with uid 1000.
+A custom python base image with uid 1000.
 
