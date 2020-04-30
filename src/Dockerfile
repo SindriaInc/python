@@ -24,7 +24,7 @@ RUN apk add \
     rm -rf /var/cache/apk/*
 
 # Setting app user, timezone and permissions
-RUN addgroup -S ${SINDRIA_USER} -g ${HOST_USER_UID} && adduser -S ${SINDRIA_USER} -u ${HOST_USER_UID} -G ${SINDRIA_USER} -h ${SINDRIA_USER_HOME} && \
+RUN addgroup -S ${SINDRIA_USER} -g ${HOST_USER_UID} && adduser -s /bin/bash -S ${SINDRIA_USER} -u ${HOST_USER_UID} -G ${SINDRIA_USER} -h ${SINDRIA_USER_HOME} && \
     mkdir -p /var/www && \
     mkdir -p /var/www/app && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
