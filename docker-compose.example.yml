@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  # =python
+  python:
+    image: "sindriainc/python:${PYTHON_TAG}-${PYTHON_VERSION}"
+    container_name: "${APP_NAME}-python"
+    volumes:
+      - "${LOCAL_CODE_PATH}:${APP_CODE_PATH}"
+    hostname: "${APP_NAME}-python.local"
+    networks:
+      default:
+        ipv4_address: "${SINDRIADOCK_PYTHON_IP_ADDRESS}"
+        aliases:
+          - "${APP_NAME}-python.local"
+
+# =networks
+networks:
+  default:
+    name: "vpc_${APP_NAME}"
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${SINDRIADOCK_NETWORK_SUBNET}
+
