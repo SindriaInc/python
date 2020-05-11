@@ -20,6 +20,8 @@ RUN apk update
 # Install packages and setting
 RUN apk add \
     bash \
+    cron \
+    supervisor \
     tzdata && \
     rm -rf /var/cache/apk/*
 
@@ -30,3 +32,13 @@ RUN addgroup -S ${SINDRIA_USER} -g ${HOST_USER_UID} && adduser -s /bin/bash -S $
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     chmod -R 770 /var/www/app && \
     chown -R ${SINDRIA_USER}:${SINDRIA_USER} /var/www/app
+
+# Supervisor configuration
+COPY resources/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+COPY resources/supervisor/conf.d/*.conf /etc/supervisor/conf.d/
+
+WORKDIR /var/www/app
+
+# Add and execute startup command
+COPY cmd.sh /cmd.sh
+CMD ["/bin/bash", "/cmd.sh"]
