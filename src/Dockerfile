@@ -20,10 +20,20 @@ RUN apk update
 # Install packages and setting
 RUN apk add \
     bash \
-    cron \
+    dcron \
     supervisor \
+    curl \
+    wget \
+    rsync \
+    ca-certificates \
     tzdata && \
     rm -rf /var/cache/apk/*
+
+# Setup cron
+RUN mkdir -p /var/log/cron && \
+    mkdir -m 0644 -p /var/spool/cron/crontabs && \
+    touch /var/log/cron/cron.log && \
+    mkdir -m 0644 -p /etc/cron.d
 
 # Setting app user, timezone and permissions
 RUN addgroup -S ${SINDRIA_USER} -g ${HOST_USER_UID} && adduser -s /bin/bash -S ${SINDRIA_USER} -u ${HOST_USER_UID} -G ${SINDRIA_USER} -h ${SINDRIA_USER_HOME} && \
