@@ -35,7 +35,9 @@ RUN mkdir -p /var/log/cron && \
     touch /var/log/cron/cron.log && \
     mkdir -m 0644 -p /etc/cron.d && \
     mkdir -m 0755 -p /etc/supervisor && \
-    mkdir -m 0755 -p /etc/supervisor/conf.d
+    mkdir -m 0755 -p /etc/supervisor/conf.d && \
+    mkdir -p /var/log/supervisor && \
+    touch /var/log/supervisor/supervisord.log
 
 # Setting app user, timezone and permissions
 RUN addgroup -S ${SINDRIA_USER} -g ${HOST_USER_UID} && adduser -s /bin/bash -S ${SINDRIA_USER} -u ${HOST_USER_UID} -G ${SINDRIA_USER} -h ${SINDRIA_USER_HOME} && \
