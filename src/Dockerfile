@@ -17,7 +17,7 @@ ENV SINDRIA_USER_HOME="/home/sindria"
 
 RUN apk update
 
-# Install packages and setting
+# Install packages
 RUN apk add \
     bash \
     dcron \
