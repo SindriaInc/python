@@ -1,0 +1,4 @@
+# Add any cronjob required by your app
+#
+# Sample command
+# * *	* * *   sindria	    echo "`date` - Cron tester" >> /home/sindria/test.txt

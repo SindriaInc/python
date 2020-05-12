@@ -49,6 +49,9 @@ RUN addgroup -S ${SINDRIA_USER} -g ${HOST_USER_UID} && adduser -s /bin/bash -S $
 COPY resources/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY resources/supervisor/conf.d/*.conf /etc/supervisor/conf.d/
 
+# Cron configuration
+COPY resources/cron/app /etc/cron.d/app
+
 WORKDIR /var/www/app
 
 # Add and execute startup command
