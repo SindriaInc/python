@@ -9,6 +9,8 @@ fi
 # Fix permission
 chown root:root /etc/cron.d/*
 chmod 644 /etc/cron.d/*
+chmod 644 /etc/supervisor/*.conf
+chmod 644 /etc/supervisor/conf.d/*.conf
 chown -R sindria:sindria /var/www/app
 
 # Override timezone by env
