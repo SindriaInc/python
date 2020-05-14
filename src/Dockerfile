@@ -56,6 +56,8 @@ COPY resources/cron/app /etc/cron.d/app
 
 WORKDIR /var/www/app
 
+SHELL ["/bin/bash", "-c"]
+
 # Add and execute startup command
 COPY cmd.sh /cmd.sh
 CMD ["/bin/bash", "/cmd.sh"]

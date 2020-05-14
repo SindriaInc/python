@@ -19,4 +19,6 @@ if [ "$TZ" != "" ] || [ "$TZ" != "Europe/Rome" ]; then
 fi
 
 
-/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+#/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+
+/usr/sbin/crond -f
