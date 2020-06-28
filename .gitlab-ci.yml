@@ -1,4 +1,4 @@
-image: registry.sindria.org/docker-images/image-builder:latest
+image: registry.sindria.org/devops/base-images/image-builder:latest
 
 stages:
     - build
