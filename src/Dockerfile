@@ -15,10 +15,13 @@ ENV TZ=${TIMEZONE}
 ENV SINDRIA_USER="sindria"
 ENV SINDRIA_USER_HOME="/home/sindria"
 
-RUN apk update
-
 # Install packages
-RUN apk add \
+RUN apk update && \
+    apk add \
+    gcc \
+    libffi-dev \
+    libc-dev \
+    libressl-dev \
     bash \
     dcron \
     supervisor \
