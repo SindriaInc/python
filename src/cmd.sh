@@ -21,4 +21,4 @@ fi
 
 #/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
 
-/usr/sbin/crond -f
+/usr/sbin/crond -f -l 8
